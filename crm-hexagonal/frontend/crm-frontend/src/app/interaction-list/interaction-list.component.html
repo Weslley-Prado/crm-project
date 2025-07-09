@@ -1,0 +1,9 @@
+<h2>Interactions</h2>
+<ul>
+  <li *ngFor="let interaction of interactions">
+    <p><strong>Content:</strong> {{ interaction.content }}</p>
+    <p><strong>Summary:</strong> {{ interaction.summary }}</p>
+    <p><strong>Auto Response:</strong> {{ interaction.autoResponse }}</p>
+    <p><strong>Timestamp:</strong> {{ interaction.timestamp | date }}</p>
+  </li>
+</ul>

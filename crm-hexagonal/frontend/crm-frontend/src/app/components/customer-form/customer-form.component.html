@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" [(ngModel)]="customer.name" name="name" required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" [(ngModel)]="customer.email" name="email" type="email" required>
+  </div>
+  <div>
+    <label for="phone">Phone:</label>
+    <input id="phone" [(ngModel)]="customer.phone" name="phone">
+  </div>
+  <!-- Use @for for Angular 17+ -->
+  @for (item of items; track item.id) {
+    <div>{{ item.name }}</div>
+  }
+  <button type="submit">Add Customer</button>
+</form>

@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="interactionContent">Interaction:</label>
+    <textarea
+      id="interactionContent"
+      name="content"
+      [(ngModel)]="interaction.content"
+      required
+      placeholder="Describe the interaction here"
+    ></textarea>
+  </div>
+  <button type="submit">Add Interaction</button>
+</form>

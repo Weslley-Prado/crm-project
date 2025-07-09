@@ -1,0 +1,37 @@
+import { Component } from '@angular/core';
+import { ApiService } from '../../api.service';
+
+System: '@angular/core';
+
+import { Interaction } from '../../models/interaction.model';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-interaction-form',
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  templateUrl: './interaction-form.component.html',
+  styleUrls: ['./interaction-form.component.css'],
+})
+export class InteractionFormComponent {
+  interaction: Interaction = { customerId: '', content: '', timestamp: new Date() };
+
+  constructor(
+    private apiService: ApiService,
+    private route: ActivatedRoute
+  ) {
+    this.interaction.customerId = this.route.snapshot.paramMap.get('customerId') || '';
+  }
+
+  onSubmit() {
+    this.apiService.createInteraction(this.interaction).subscribe({
+      next: () => {
+        alert('Interaction created');
+        this.interaction.content = '';
+      },
+      error: () => alert('Error creating interaction')
+    });
+  }
+}
