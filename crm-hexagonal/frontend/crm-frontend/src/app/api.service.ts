@@ -9,7 +9,9 @@ import { Interaction } from './models/interaction.model';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://backend:3000';
+  // private apiUrl = 'http://backend:3000';
+  private apiUrl = '/api';
+
 
   constructor(private http: HttpClient) {}
 
