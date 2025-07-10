@@ -33,4 +33,8 @@ export class ApiService {
   getAllInteractions(): Observable<Interaction[]> {
     return this.http.get<Interaction[]>(`${this.apiUrl}/interactions`);
   }
+  getCustomerById(id: string): Observable<Customer | null> {
+  return this.http.get<Customer>(`${this.apiUrl}/customers/${id}`);
+}
+
 }

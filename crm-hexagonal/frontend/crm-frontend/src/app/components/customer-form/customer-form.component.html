@@ -1,19 +1,79 @@
-<form (ngSubmit)="onSubmit()">
-  <div>
-    <label for="name">Name:</label>
-    <input id="name" [(ngModel)]="customer.name" name="name" required>
+<div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow mt-8">
+
+  <form (ngSubmit)="onSubmit()" *ngIf="!createdCustomerId" class="space-y-6">
+
+    <h2 class="text-xl font-bold mb-4">Criar Novo Cliente</h2>
+
+    <div>
+      <label for="name" class="block text-sm font-medium mb-1">Nome</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        [(ngModel)]="customer.name"
+        required
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+      />
+    </div>
+
+    <div>
+      <label for="email" class="block text-sm font-medium mb-1">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        [(ngModel)]="customer.email"
+        required
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+      />
+    </div>
+
+    <div>
+      <label for="phone" class="block text-sm font-medium mb-1">Telefone</label>
+      <input
+        id="phone"
+        name="phone"
+        type="text"
+        [(ngModel)]="customer.phone"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+      />
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="isLoading"
+      class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50 flex justify-center items-center gap-2"
+    >
+      <span *ngIf="!isLoading">Criar Cliente</span>
+      <svg
+        *ngIf="isLoading"
+        class="animate-spin h-5 w-5 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+        ></path>
+      </svg>
+    </button>
+
+  </form>
+
+  <div *ngIf="createdCustomerId" class="text-center space-y-4">
+    <p class="text-lg font-semibold">Cliente criado com sucesso!</p>
+    <p class="font-mono bg-gray-100 p-3 rounded break-words select-all">
+      {{ createdCustomerId }}
+    </p>
+    <button
+      (click)="onCopyAndContinue()"
+      class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+    >
+      Copiar ID e acessar chat
+    </button>
   </div>
-  <div>
-    <label for="email">Email:</label>
-    <input id="email" [(ngModel)]="customer.email" name="email" type="email" required>
-  </div>
-  <div>
-    <label for="phone">Phone:</label>
-    <input id="phone" [(ngModel)]="customer.phone" name="phone">
-  </div>
-  <!-- Use @for for Angular 17+ -->
-  @for (item of items; track item.id) {
-    <div>{{ item.name }}</div>
-  }
-  <button type="submit">Add Customer</button>
-</form>
+
+</div>

@@ -33,11 +33,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { Interaction } from '../../models/interaction.model';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-interaction-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormsModule, HttpClientModule],
   templateUrl: './interaction-list.component.html',
   styleUrls: ['./interaction-list.component.css']
 })

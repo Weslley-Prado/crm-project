@@ -1,13 +1,40 @@
-<form (ngSubmit)="onSubmit()">
+<form
+  (ngSubmit)="onSubmit()"
+  class="bg-white max-w-xl mx-auto p-6 rounded-xl shadow-md space-y-6"
+>
+  <h2 class="text-xl font-bold text-gray-800">Adicionar Interação</h2>
+
   <div>
-    <label for="interactionContent">Interaction:</label>
+    <label for="interactionContent" class="block text-sm font-medium text-gray-700 mb-1">
+      Interação
+    </label>
     <textarea
       id="interactionContent"
       name="content"
       [(ngModel)]="interaction.content"
       required
-      placeholder="Describe the interaction here"
+      rows="5"
+      placeholder="Descreva a interação aqui..."
+      class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
     ></textarea>
   </div>
-  <button type="submit">Add Interaction</button>
+
+  <button
+    type="submit"
+    [disabled]="isLoading"
+    class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2 disabled:opacity-50"
+  >
+    <span *ngIf="!isLoading">Adicionar Interação</span>
+    <span *ngIf="isLoading" class="flex items-center gap-2">
+      <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+        ></path>
+      </svg>
+      Enviando...
+    </span>
+  </button>
 </form>

@@ -1,7 +1,30 @@
-<h2>Customers</h2>
-<ul>
-  <li *ngFor="let customer of customers">
-    {{ customer.name }} ({{ customer.email }})
-    <a [routerLink]="['/interactions', customer.id]">View Interactions</a>
-  </li>
-</ul>
+<div class="max-w-5xl mx-auto px-4 py-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">Clientes</h2>
+
+  <ng-container *ngIf="customers.length > 0; else emptyList">
+    <ul class="grid gap-4">
+      <li
+        *ngFor="let customer of customers"
+        class="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition flex justify-between items-center"
+      >
+        <div>
+          <p class="text-lg font-semibold text-gray-800">{{ customer.name }}</p>
+          <p class="text-sm text-gray-500">{{ customer.email }}, Chave de acesso do cliente: {{ customer.id }}</p>
+        </div>
+
+        <a
+          [routerLink]="['/interactions', customer.id]"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
+        >
+          Ver Interações
+        </a>
+      </li>
+    </ul>
+  </ng-container>
+
+  <ng-template #emptyList>
+    <div class="text-center text-gray-500 mt-8">
+      Nenhum cliente encontrado.
+    </div>
+  </ng-template>
+</div>

@@ -1,11 +1,5 @@
-/* nav {
-  pointer-events: none;
-  z-index: -1;
-  display: none;
+/* Exemplo opcional, pode usar Tailwind direto */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: aqua;
 }
-
-nav a {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-} */

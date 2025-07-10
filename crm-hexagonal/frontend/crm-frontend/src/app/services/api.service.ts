@@ -41,4 +41,10 @@ export class ApiService {
   deleteInteraction(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/interactions/${id}`);
   }
+
+  getCustomerById(id: string): Observable<Customer | null> {
+  return this.http.get<Customer>(`${this.apiUrl}/customers/${id}`);
+}
+
+
 }

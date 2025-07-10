@@ -1,0 +1,54 @@
+<div class="max-w-2xl mx-auto h-screen flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
+  <!-- Header -->
+  <div class="bg-blue-600 text-white px-6 py-4 text-lg font-bold">
+    Chat com o Cliente
+  </div>
+
+  <!-- Mensagens -->
+  <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+    <ng-container *ngFor="let msg of interactions">
+      <!-- Mensagem enviada pelo cliente -->
+      <div class="flex justify-end">
+        <div class="bg-blue-600 text-white px-4 py-2 rounded-xl max-w-xs text-sm">
+          {{ msg.content }}
+        </div>
+      </div>
+
+      <!-- Resposta automática (se houver) -->
+      <div *ngIf="msg.autoResponse" class="flex justify-start">
+        <div class="bg-gray-200 text-gray-800 px-4 py-2 rounded-xl max-w-xs text-sm">
+          {{ msg.autoResponse }}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Campo de envio -->
+  <form
+    (ngSubmit)="sendMessage()"
+    class="border-t px-4 py-3 bg-white flex items-center gap-2"
+  >
+    <input
+      [(ngModel)]="newMessage"
+      name="message"
+      placeholder="Digite sua mensagem..."
+      class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      required
+    />
+    <button
+  type="submit"
+  [disabled]="isLoading"
+  class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center"
+>
+  <ng-container *ngIf="!isLoading">Enviar</ng-container>
+  <ng-container *ngIf="isLoading">
+    <span class="typing-dots" aria-label="Digitando">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </ng-container>
+</button>
+
+  </form>
+</div>

@@ -1,18 +1,59 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" class="bg-white p-6 rounded-xl shadow-md space-y-6 max-w-lg mx-auto">
+  <h2 class="text-xl font-bold text-gray-800">Adicionar Cliente</h2>
+
+  <!-- Nome -->
   <div>
-    <label for="name">Name:</label>
-    <input id="name" [(ngModel)]="customer.name" name="name" required >
+    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+    <input
+      id="name"
+      name="name"
+      type="text"
+      [(ngModel)]="customer.name"
+      required
+      class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
   </div>
 
+  <!-- Email -->
   <div>
-    <label for="email">Email:</label>
-    <input id="email" [(ngModel)]="customer.email" name="email" type="email" required>
+    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      [(ngModel)]="customer.email"
+      required
+      class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
   </div>
 
+  <!-- Telefone -->
   <div>
-    <label for="phone">Phone:</label>
-    <input id="phone" [(ngModel)]="customer.phone" name="phone">
+    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
+    <input
+      id="phone"
+      name="phone"
+      type="tel"
+      [(ngModel)]="customer.phone"
+      class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
   </div>
 
-  <button type="submit">Add Customer</button>
+  <button
+  type="submit"
+  [disabled]="isLoading"
+  class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+>
+  <span *ngIf="!isLoading">Adicionar Cliente</span>
+  <span *ngIf="isLoading">
+    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor"
+        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z">
+      </path>
+    </svg>
+    Enviando...
+  </span>
+</button>
+
 </form>

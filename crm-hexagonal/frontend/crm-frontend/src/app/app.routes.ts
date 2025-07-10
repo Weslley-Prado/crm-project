@@ -5,6 +5,8 @@ import { InteractionFormComponent } from './components/interaction-form/interact
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { AllInteractionsComponent } from './components/all-interactions/all-interactions.component';
 import { InteractionEditComponent } from './interaction-form/interaction-edit.component';
+import { ClientChatComponent } from './components/chat-client/client-chat.component';
+import { ClientAccessComponent } from './components/chat-client/client-access.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/customers', pathMatch: 'full' },
@@ -13,6 +15,8 @@ export const routes: Routes = [
   { path: 'interactions/:customerId', component: InteractionListComponent },
   { path: 'add-interaction/:customerId', component: InteractionFormComponent },
   { path: 'edit-interaction/:customerId/:interactionId', component: InteractionEditComponent },
+  { path: 'client-access', component: ClientAccessComponent },
+  { path: 'client-chat/:id', component: ClientChatComponent },
   { path: 'all-interactions', component: AllInteractionsComponent },
   { path: '**', redirectTo: '/customers' }
 ];
