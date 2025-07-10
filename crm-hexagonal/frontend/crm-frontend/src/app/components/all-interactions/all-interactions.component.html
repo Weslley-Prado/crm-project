@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <h2>All Interactions</h2>
+  <ul class="list-group" *ngIf="interactions.length; else noInteractions">
+    <li class="list-group-item" *ngFor="let interaction of interactions">
+      <strong>Customer ID:</strong> {{ interaction.customerId }}<br>
+      <strong>Content:</strong> {{ interaction.content }}<br>
+      <strong>Summary:</strong> {{ interaction.summary }}<br>
+      <strong>Auto Response:</strong> {{ interaction.autoResponse }}<br>
+      <!-- <small class="text-muted">{{ interaction.createdAt | date:'medium' }}</small> -->
+    </li>
+  </ul>
+  <ng-template #noInteractions>
+    <p class="alert alert-info">No interactions found.</p>
+  </ng-template>
+</div>

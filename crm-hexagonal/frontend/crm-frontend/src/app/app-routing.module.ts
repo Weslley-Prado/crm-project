@@ -4,12 +4,15 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
 import { CustomerFormComponent } from './components/customer-form/customer-form.component';
 import { InteractionListComponent } from './components/interaction-list/interaction-list.component';
 import { InteractionFormComponent } from './components/interaction-form/interaction-form.component';
+import { AllInteractionsComponent } from './components/all-interactions/all-interactions.component';
 
 const routes: Routes = [
   { path: '', component: CustomerListComponent },
   { path: 'add-customer', component: CustomerFormComponent },
   { path: 'interactions/:customerId', component: InteractionListComponent },
-  { path: 'add-interaction/:customerId', component: InteractionFormComponent }
+  { path: 'add-interaction/:customerId', component: InteractionFormComponent },
+  { path: 'all-interactions', component: AllInteractionsComponent },
+
 ];
 
 @NgModule({

@@ -30,4 +30,7 @@ export class ApiService {
   createInteraction(interaction: Interaction): Observable<Interaction> {
     return this.http.post<Interaction>(`${this.apiUrl}/interactions`, interaction);
   }
+  getAllInteractions(): Observable<Interaction[]> {
+    return this.http.get<Interaction[]>(`${this.apiUrl}/interactions`);
+  }
 }
