@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto h-screen flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
+<div class="w-full max-w-md mx-auto h-[80vh] flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
   <!-- Header -->
   <div class="bg-blue-600 text-white px-6 py-4 text-lg font-bold">
     Chat com o Cliente
@@ -36,19 +36,18 @@
       required
     />
     <button
-  type="submit"
-  [disabled]="isLoading"
-  class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center"
->
-  <ng-container *ngIf="!isLoading">Enviar</ng-container>
-  <ng-container *ngIf="isLoading">
-    <span class="typing-dots" aria-label="Digitando">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-  </ng-container>
-</button>
-
+      type="submit"
+      [disabled]="isLoading"
+      class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center"
+    >
+      <ng-container *ngIf="!isLoading">Enviar</ng-container>
+      <ng-container *ngIf="isLoading">
+        <span class="typing-dots" aria-label="Digitando">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </ng-container>
+    </button>
   </form>
 </div>
