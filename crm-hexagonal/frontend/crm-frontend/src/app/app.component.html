@@ -20,6 +20,7 @@
     <!-- Cards -->
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
+      <!-- Card 1 - Clientes -->
       <a
         routerLink="/customers"
         class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition flex items-center space-x-4 no-underline"
@@ -31,6 +32,7 @@
         </div>
       </a>
 
+      <!-- Card 2 - Novo Cliente -->
       <a
         routerLink="/add-customer"
         class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition flex items-center space-x-4 no-underline"
@@ -42,9 +44,17 @@
         </div>
       </a>
 
-      <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition flex items-center justify-center">
+      <!-- Card 3 - Chat Clients -->
+      <a
+        routerLink="/client-access"
+        class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition flex items-center space-x-4 no-underline"
+      >
         <lucide-message-square class="text-purple-600 w-6 h-6" />
-      </div>
+        <div>
+          <h3 class="text-lg font-medium text-gray-900">Chat Clientes</h3>
+          <p class="text-gray-500 text-sm">Acessar área de interação do cliente</p>
+        </div>
+      </a>
 
     </div>
 
