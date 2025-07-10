@@ -1,4 +1,4 @@
-<h2>Interactions</h2>
+<!-- <h2>Interactions</h2>
 <ul>
   <li *ngFor="let interaction of interactions">
     <p><strong>Content:</strong> {{ interaction.content }}</p>
@@ -6,4 +6,25 @@
     <p><strong>Auto Response:</strong> {{ interaction.autoResponse }}</p>
     <p><strong>Timestamp:</strong> {{ interaction.timestamp | date }}</p>
   </li>
-</ul>
+</ul> -->
+<div class="container mt-4">
+  <h2>Interactions for Customer</h2>
+  <a [routerLink]="['/add-interaction', customerId]" class="btn btn-primary mb-3">Add Interaction</a>
+  <ul class="list-group" *ngIf="interactions.length; else noInteractions">
+    <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let interaction of interactions">
+      <div>
+        <strong>Content:</strong> {{ interaction.content }}<br>
+        <strong>Summary:</strong> {{ interaction.summary }}<br>
+        <strong>Auto Response:</strong> {{ interaction.autoResponse }}<br>
+        <!-- <small class="text-muted">{{ interaction.createdAt | date:'medium' }}</small> -->
+      </div>
+      <div>
+        <button class="btn btn-sm btn-warning me-2" (click)="editInteraction(interaction.id!)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteInteraction(interaction.id!)">Delete</button>
+      </div>
+    </li>
+  </ul>
+  <ng-template #noInteractions>
+    <p class="alert alert-info">No interactions found.</p>
+  </ng-template>
+</div>

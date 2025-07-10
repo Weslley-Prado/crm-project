@@ -1,0 +1,11 @@
+<div class="container mt-4">
+  <h2>Edit Interaction</h2>
+  <form (ngSubmit)="onSubmit()" class="card p-4">
+    <div class="mb-3">
+      <label for="content" class="form-label">Interaction Content:</label>
+      <textarea id="content" class="form-control" [(ngModel)]="interaction.content" name="content" placeholder="Enter interaction details" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Interaction</button>
+    <a [routerLink]="['/interactions', customerId]" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>

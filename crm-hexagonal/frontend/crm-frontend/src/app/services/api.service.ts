@@ -27,4 +27,18 @@ export class ApiService {
   getInteractions(customerId: string): Observable<Interaction[]> {
     return this.http.get<Interaction[]>(`${this.apiUrl}/interactions/${customerId}`);
   }
+  getAllInteractions(): Observable<Interaction[]> {
+    return this.http.get<Interaction[]>(`${this.apiUrl}/interactions`);
+  }
+  getInteraction(id: string): Observable<Interaction> {
+    return this.http.get<Interaction>(`${this.apiUrl}/interactions/id/${id}`);
+  }
+
+  updateInteraction(id: string, interaction: Interaction): Observable<Interaction> {
+    return this.http.put<Interaction>(`${this.apiUrl}/interactions/${id}`, interaction);
+  }
+
+  deleteInteraction(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/interactions/${id}`);
+  }
 }
